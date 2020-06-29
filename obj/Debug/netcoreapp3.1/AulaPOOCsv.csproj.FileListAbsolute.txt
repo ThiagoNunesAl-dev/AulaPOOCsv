@@ -1,0 +1,13 @@
+D:\Thiago\Projetos\C#\AulaPOOCsv\bin\Debug\netcoreapp3.1\AulaPOOCsv.exe
+D:\Thiago\Projetos\C#\AulaPOOCsv\bin\Debug\netcoreapp3.1\AulaPOOCsv.deps.json
+D:\Thiago\Projetos\C#\AulaPOOCsv\bin\Debug\netcoreapp3.1\AulaPOOCsv.runtimeconfig.json
+D:\Thiago\Projetos\C#\AulaPOOCsv\bin\Debug\netcoreapp3.1\AulaPOOCsv.runtimeconfig.dev.json
+D:\Thiago\Projetos\C#\AulaPOOCsv\bin\Debug\netcoreapp3.1\AulaPOOCsv.dll
+D:\Thiago\Projetos\C#\AulaPOOCsv\bin\Debug\netcoreapp3.1\AulaPOOCsv.pdb
+D:\Thiago\Projetos\C#\AulaPOOCsv\obj\Debug\netcoreapp3.1\AulaPOOCsv.csprojAssemblyReference.cache
+D:\Thiago\Projetos\C#\AulaPOOCsv\obj\Debug\netcoreapp3.1\AulaPOOCsv.csproj.CoreCompileInputs.cache
+D:\Thiago\Projetos\C#\AulaPOOCsv\obj\Debug\netcoreapp3.1\AulaPOOCsv.AssemblyInfoInputs.cache
+D:\Thiago\Projetos\C#\AulaPOOCsv\obj\Debug\netcoreapp3.1\AulaPOOCsv.AssemblyInfo.cs
+D:\Thiago\Projetos\C#\AulaPOOCsv\obj\Debug\netcoreapp3.1\AulaPOOCsv.dll
+D:\Thiago\Projetos\C#\AulaPOOCsv\obj\Debug\netcoreapp3.1\AulaPOOCsv.pdb
+D:\Thiago\Projetos\C#\AulaPOOCsv\obj\Debug\netcoreapp3.1\AulaPOOCsv.genruntimeconfig.cache
