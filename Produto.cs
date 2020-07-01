@@ -9,7 +9,7 @@ namespace AulaPOOCsv
         public string Nome { get; set; }
         public float Preco { get; set; }
 
-        private const string Path = "Database/produto.csv";
+        private const string Path = "Database/Produto.csv";
 
         public Produto () {
             if (!File.Exists(Path)) {
