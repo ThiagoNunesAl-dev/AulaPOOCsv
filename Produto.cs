@@ -42,6 +42,7 @@ namespace AulaPOOCsv
             return dado.Split(":")[1];
         }
 
+        //Exibir a lista no terminal.
         public List<Produto> Ler () {
             //Cria-se uma lista de produtos padrão.
             List<Produto> produtos = new List<Produto>();
@@ -63,10 +64,27 @@ namespace AulaPOOCsv
                 //Os dados são inseridos na lista.
                 produtos.Add(prod);
             }
-
-            produtos = produtos.OrderBy(z => z.Nome).ToList();
-            
             return produtos;
+        }
+
+        //Remove itens da lista de produtos (arquivo csv), conforme um parâmetro específico.
+        public void Remover (string _termo) {
+            //Cria-se uma lista de itens para servir como backup.
+            List<string> lines = new List<string>();
+
+            //O arquivo é aberto e lido.
+            using(StreamReader file = new StreamReader (Path)) {
+                string line;
+                while ((line = file.ReadLine()) != null) {
+                    lines.Add(line);
+                }
+                //São removidos os itens que contêm o termo indicado.
+                lines.RemoveAll(l => l.Contains(_termo));
+            }
+            //O arquivo agora é reescrito, sem o item removido.
+            using (StreamWriter output = new StreamWriter(Path)) {
+                output.Write(String.Join(Environment.NewLine, lines.ToArray()));
+            }
         }
     }
 }

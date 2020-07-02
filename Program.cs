@@ -20,6 +20,8 @@ namespace AulaPOOCsv
             p2.Preco = 5000f;
             p2.Inserir(p2);
 
+            p2.Remover("Gibson");
+
             List<Produto> lista = new List<Produto>();
             lista = p1.Ler();
 
