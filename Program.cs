@@ -22,6 +22,13 @@ namespace AulaPOOCsv
 
             p2.Remover("Gibson");
 
+            Produto alterado = new Produto();
+            alterado.Codigo = 1;
+            alterado.Nome = "Fender Stratocaster";
+            alterado.Preco = 7000f;
+            
+            p1.AlterarProduto(alterado);
+
             List<Produto> lista = new List<Produto>();
             lista = p1.Ler();
 

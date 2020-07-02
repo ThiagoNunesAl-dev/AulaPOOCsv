@@ -64,6 +64,10 @@ namespace AulaPOOCsv
                 //Os dados são inseridos na lista.
                 produtos.Add(prod);
             }
+
+            //Ordena a lista de acordo com o código.
+            produtos = produtos.OrderBy(z => z.Codigo).ToList();
+            
             return produtos;
         }
 
@@ -83,6 +87,29 @@ namespace AulaPOOCsv
             }
             //O arquivo agora é reescrito, sem o item removido.
             using (StreamWriter output = new StreamWriter(Path)) {
+                output.Write(String.Join(Environment.NewLine, lines.ToArray()));
+            }
+        }
+
+        public void AlterarProduto (Produto produtoAlterado) {
+             //Cria-se uma lista de itens para servir como backup.
+            List<string> lines = new List<string>();
+
+            //O arquivo é aberto e lido.
+            using(StreamReader file = new StreamReader (Path)) {
+                string line;
+                while ((line = file.ReadLine()) != null) {
+                    lines.Add(line);
+                }
+                //A linha é removida de acordo com o código do produto.
+                lines.RemoveAll(x => x.Split(";")[0].Contains(produtoAlterado.Codigo.ToString()));
+
+                //A nova linha é adicionada.
+                lines.Add(PrepararLinhaCSV(produtoAlterado));
+            }
+
+            //O arquivo é reescrito, agora com o novo item.
+             using (StreamWriter output = new StreamWriter(Path)) {
                 output.Write(String.Join(Environment.NewLine, lines.ToArray()));
             }
         }
