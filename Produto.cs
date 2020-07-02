@@ -4,7 +4,7 @@ namespace AulaPOOCsv
     using System.IO;
     using System.Collections.Generic;
     using System.Linq;
-    public class Produto
+    public class Produto : IProduto
     {
         public int Codigo { get; set; }
         public string Nome { get; set; }
@@ -12,27 +12,39 @@ namespace AulaPOOCsv
 
         private const string Path = "Database/Produto.csv";
 
-        //Cria uma pasta Produto.csv (conforme o caminho criado acima), se esta não existir.
+        /// <summary>
+        /// Cria uma pasta Produto.csv (conforme o caminho criado acima), se esta não existir.
+        /// </summary>
         public Produto () {
             if (!File.Exists(Path)) {
                 File.Create(Path).Close();
             }
         }
 
-        //Prepara uma linha no formato padrão csv.
-        private string PrepararLinhaCSV (Produto p) {
+        /// <summary>
+        /// Prepara uma linha no formato padrão csv.
+        /// </summary>
+        /// <param name="p">Produto já instanciado.</param>
+        /// <returns>Uma estrutura no formato csv, com todas as informações relevantes do produto.</returns>
+        public string PrepararLinhaCSV (Produto p) {
             return $"Código:{p.Codigo};Nome:{p.Nome};Preço:{p.Preco}";
         }
 
-        //Insere a linha criada e preenchida conforme o método acima no documento csv.
-        //O formato suportado é de lista, então é necessário transformar a string preparada anteriormente em uma lista.
+        /// <summary>
+        /// Insere a linha criada e preenchida conforme o método acima no documento csv.
+        /// </summary>
+        /// <param name="p">Produto já instanciado.</param>
         public void Inserir (Produto p) {
             string[] linha = new string[] {PrepararLinhaCSV(p)};
             //Append acrescenta as linhas preparadas ao documento csv.
             File.AppendAllLines(Path, linha);
         }
 
-        //Separa os dados.
+        /// <summary>
+        /// Separa os dados.
+        /// </summary>
+        /// <param name="dado">Dado extraído.</param>
+        /// <returns>Dados devidamente extraídos de acordo com o parâmetro dado na função "Split".</returns>
         public string Separar (string dado) {
             //Ex.:
             //dado => Código:1
@@ -42,7 +54,10 @@ namespace AulaPOOCsv
             return dado.Split(":")[1];
         }
 
-        //Exibir a lista no terminal.
+        /// <summary>
+        /// Exibir a lista no terminal.
+        /// </summary>
+        /// <returns>Lista de produtos com nomes e preços (tudo mostrado no terminal).</returns>
         public List<Produto> Ler () {
             //Cria-se uma lista de produtos padrão.
             List<Produto> produtos = new List<Produto>();
@@ -67,11 +82,14 @@ namespace AulaPOOCsv
 
             //Ordena a lista de acordo com o código.
             produtos = produtos.OrderBy(z => z.Codigo).ToList();
-            
+
             return produtos;
         }
 
-        //Remove itens da lista de produtos (arquivo csv), conforme um parâmetro específico.
+        /// <summary>
+        /// Remove itens da lista de produtos (arquivo csv), conforme um parâmetro específico.
+        /// </summary>
+        /// <param name="_termo">Parâmetro dado para a remoção (um nome, um número...).</param>
         public void Remover (string _termo) {
             //Cria-se uma lista de itens para servir como backup.
             List<string> lines = new List<string>();
@@ -91,6 +109,10 @@ namespace AulaPOOCsv
             }
         }
 
+        /// <summary>
+        /// Altera um produto existente na lista por um outro produto instanciado.
+        /// </summary>
+        /// <param name="produtoAlterado">Produto instanciado, que será colocado na lista.</param>
         public void AlterarProduto (Produto produtoAlterado) {
              //Cria-se uma lista de itens para servir como backup.
             List<string> lines = new List<string>();
